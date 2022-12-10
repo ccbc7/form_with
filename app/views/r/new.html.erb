@@ -1,0 +1,19 @@
+
+<h1>予約画面</h1>
+
+<%= form_with(url: "/r/:id/confirm") do |form| %>
+  <h3>フォーム内容</h3>
+  <table>
+    <tr>
+      <th>
+        <%= form.label :start_day ,"開始日" %>
+      </th>
+      <td>
+        <%= form.date_field :start_day %>
+      </td>
+    </tr>
+  </table>
+  <%= form.submit "確認画面へ" %>
+  <% end %>
+
+

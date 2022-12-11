@@ -1,0 +1,9 @@
+<h1>確認画面</h1>
+
+<P>開始日：</P>
+<%= @reservation.start_day %>
+<%= @reservation.id %>
+<%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :start_day %>
+  <%= f.submit '投稿する' %>
+<% end %>

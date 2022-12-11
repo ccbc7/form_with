@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   get 'r/index'
-  root to: "r#new"
+  root to: "reservations#new"
 
-  resources :r do
-    member do
+  resources :reservations do
+    # member do
+    #   post 'confirm'
+    # end
+    collection do
       post 'confirm'
     end
   end

@@ -12,6 +12,14 @@
         <%= form.date_field :start_day %>
       </td>
     </tr>
+    <tr>
+      <th>
+        <%= form.label :room_name ,"ルームネーム" %>
+      </th>
+      <td>
+        <%= form.text_field :room_name %>
+      </td>
+    </tr>
   </table>
   <%= form.submit "確認画面へ" %>
     <% end %>

@@ -1,9 +1,25 @@
 <h1>確認画面</h1>
 
-<P>開始日：</P>
-<%= @reservation.start_day %>
-<%= @reservation.id %>
-<%= form_with model: @reservation do |f| %>
-  <%= f.hidden_field :start_day %>
-  <%= f.submit '投稿する' %>
+<table>
+  <tr>
+    <th>開始日：</th>
+    <td>
+      <%= @reservation.start_day %>
+    </td>
+  </tr>
+  <tr>
+    <th>ルームネーム:</th>
+    <td>
+      <%= @reservation.room_name %>
+    </td>
+  </tr>
+
+</table>
+
+<%= form_with model: @reservation, local: true do |f| %>
+<%= f.hidden_field :start_day %>
+<%= f.hidden_field :room_name %>
+
+<%= f.submit "修正する" , name: "back" %>
+<%= f.submit "確定する" %>
 <% end %>

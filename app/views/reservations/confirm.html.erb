@@ -2,24 +2,57 @@
 
 <table>
   <tr>
-    <th>開始日：</th>
-    <td>
-      <%= @reservation.start_day %>
-    </td>
-  </tr>
-  <tr>
     <th>ルームネーム:</th>
     <td>
       <%= @reservation.room_name %>
     </td>
   </tr>
+  <tr>
+    <th>開始日：</th>
+    <td>
+      <%= @reservation.start_day.to_s(:datetime_jp) %>
+    </td>
+  </tr>
+  <tr>
+    <th>終了日：</th>
+    <td>
+    <%= @reservation.end_day.to_s(:datetime_jp) %>
+    </td>
+  </tr>
+  <tr>
+    <th>日額:</th>
+    <td>
+      <%= @reservation.charge %>円
+    </td>
+  </tr>
+  <tr>
+    <th>人数:</th>
+    <td>
+      <%= @reservation.people %>人
+    </td>
+  </tr>
+  <tr>
+    <th>合計料金:</th>
+    <td>
+      <% sub_price = (@reservation.charge) * (@reservation.people).to_i %>
+      <% total_day =  ((@reservation.end_day) - (@reservation.start_day)) / (24) / (3600).floor %>
+      <% total_price = sub_price * total_day %>
+      <%= total_price.floor %>円
+    </td>
+  </tr>
+
 
 </table>
 
 <%= form_with model: @reservation, local: true do |f| %>
-<%= f.hidden_field :start_day %>
-<%= f.hidden_field :room_name %>
+  <%= f.hidden_field :start_day, :value => params[:start_day] %>
+  <%= f.hidden_field :room_name, :value => @reservation.room_name %>
+  <%= f.hidden_field :end_day, :value => @reservation.end_day%>
+  <%= f.hidden_field :people, :value => @reservation.people %>
+  <%= f.hidden_field :charge, :value => @reservation.charge %>
+  <%= f.hidden_field :adress, :value => @reservation.adress %>
 
-<%= f.submit "修正する" , name: "back" %>
-<%= f.submit "確定する" %>
+  <%= f.submit "修正する" , name: :back %>
+  <%= f.submit "確定する" %>
+
 <% end %>

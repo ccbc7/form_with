@@ -6,6 +6,14 @@
   <table>
     <tr>
       <th>
+        <%= form.label :room_name ,"ルームネーム" %>
+      </th>
+      <td>
+        <%= form.text_field :room_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>
         <%= form.label :start_day ,"開始日" %>
       </th>
       <td>
@@ -14,12 +22,47 @@
     </tr>
     <tr>
       <th>
-        <%= form.label :room_name ,"ルームネーム" %>
+        <%= form.label :"終了日" %>
       </th>
       <td>
-        <%= form.text_field :room_name %>
+        <%= form.date_field :end_day%>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= form.label :adress ,"住所" %>
+      </th>
+      <td>
+        <%= form.text_field :adress %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= form.label :people ,"人数" %>
+      </th>
+      <td>
+        <%= form.number_field :people %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= form.label :charge ,"日額" %>
+      </th>
+      <td>
+        <%= form.number_field :charge %>
       </td>
     </tr>
   </table>
   <%= form.submit "確認画面へ" %>
     <% end %>
+
+
+        <!-- t.string "room_introduction"
+        t.integer "charge"
+        t.string "adress"
+        t.string "img"
+        t.integer "user_id"
+        t.integer "room_id"
+        t.datetime "start_day"
+        t.datetime "end_day"
+        t.integer "people" -->

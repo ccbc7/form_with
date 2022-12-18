@@ -1,5 +1,7 @@
 <h1>一覧画面</h1>
-
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -9,6 +11,7 @@
       <th>終了日</th>
       <th>人数</th>
       <th>合計額</th>
+      <th>削除</th>
     </tr>
   </thead>
 
@@ -17,10 +20,11 @@
       <tr>
         <td><%= r.id %></td>
         <td><%= r.room_name %></td>
-        <td><%= r.start_day %>
-        <td><%= r.end_day %>
+        <td><%= r.start_day.to_s(:datetime_jp)  %>
+        <td><%= r.end_day.to_s(:datetime_jp)  %>
         <td><%= r.people %>人</td>
-        <td></td>
+        <td>¥<%= r.people * r.charge * ((r.end_day - r.start_day)/24/3600).floor %></td>
+        <td><%= link_to "削除" ,r, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
       </tr>
       <% end %>
   </tbody>

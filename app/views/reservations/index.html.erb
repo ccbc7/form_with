@@ -17,10 +17,10 @@
       <tr>
         <td><%= r.id %></td>
         <td><%= r.room_name %></td>
-        <td><%= r.start_day.to_s(:datetime_jp) %></td>
-        <td><%= r.end_day%></td>
+        <td><%= r.start_day %>
+        <td><%= r.end_day %>
         <td><%= r.people %>人</td>
-        <td><%= binding.pry %></td>
+        <td></td>
       </tr>
       <% end %>
   </tbody>
